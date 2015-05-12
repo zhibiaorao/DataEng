@@ -1,3 +1,4 @@
+# The code is written in Python 2.7.9. If you run different versions, it may have errors
 from collections import Counter
 from re import split
 

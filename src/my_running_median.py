@@ -1,3 +1,4 @@
+# The code is written in Python 2.7.9. If you run different versions, it may have errors
 from re import split
 
 def insertA(n, sorted_list,i): # sorted the median of each line
