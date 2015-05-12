@@ -1,6 +1,6 @@
 from re import split
 
-def insertA(n, sorted_list,i):
+def insertA(n, sorted_list,i): # sorted the median of each line
     N = len(sorted_list);
     if N == 0: return [],i;
     elif N ==1:
@@ -17,22 +17,22 @@ def insertA(n, sorted_list,i):
 
 lineword = []
 ReadNo = []
-with open("C:\Users\zhibiao\Desktop\DataEng-master\DataEng-master\wc_input\test.txt","rU") as files:
-    for line in files:
-        line = line.strip().lower()
-        for word in split("[^a-zA-Z']+", line):
-            if word:
-                lineword.append(word)
+with open("../wc_input/test.txt","rU") as files:
+    with open("../wc_output/med_result.txt","wb") as text_file:
+        for line in files:
+            line = line.strip().lower()
+            for word in split("[^a-zA-Z']+", line):
+                if word:
+                    lineword.append(word)
+            WordNo = len(lineword)
+            a,i = insertA(WordNo, ReadNo,0);
+            ReadNo= ReadNo[:i]+ [WordNo] +ReadNo[i:]
+            N = len(ReadNo)
+        
+            if N%2 ==0:
+                text_file.write('%.2f \n' % ((ReadNo[N/2] + ReadNo[N/2-1])/2.0))
+            else:
+                text_file.write('%.2f \n' % (ReadNo[N/2]))
 
-        WordNo = len(lineword)
-        a,i = insertA(WordNo, ReadNo,0);
-        ReadNo= ReadNo[:i]+ [WordNo] +ReadNo[i:]
-        N = len(ReadNo)
-        if N%2 ==0: print((ReadNo[N/2] + ReadNo[N/2-1])/2.0)
-        else:print(ReadNo[N/2])
-        lineword = []
 
-
-
-
-
+            lineword = []
